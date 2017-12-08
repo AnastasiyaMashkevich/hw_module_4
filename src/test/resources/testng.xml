@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testing calculator" thread-count="2" parallel="tests" preserve-order="true">
+    <test name="Test1" >
+        <classes>
+            <class name="epam.com.calculator.test.BaseTest" >
+                <methods>
+                    <include name="assertOneCanOpenMainPage"/>
+                    <include name="assertOneCanTakeCorrectSearchResult"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
