@@ -2,10 +2,10 @@
 <suite name="testing calculator" thread-count="2" parallel="tests" preserve-order="true">
     <test name="Test1" >
         <classes>
-            <class name="epam.com.calculator.test.BaseTest" >
+            <class name="epam.com.calculator.test.testng.SumTest" >
                 <methods>
-                    <include name="assertOneCanOpenMainPage"/>
-                    <include name="assertOneCanTakeCorrectSearchResult"/>
+                    <include name="sumTest"/>
+                    <include name="sumNegatTest"/>
                 </methods>
             </class>
         </classes>
