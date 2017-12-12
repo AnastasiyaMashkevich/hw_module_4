@@ -31,7 +31,7 @@ public class SumDoubleTest extends JunitBaseTest {
 
     @Test
     public void sumNegatTest () {
-        Assert.assertNotSame("The operation of addition is not correct", calculator.sum(a, c), RESULT);
+        Assert.assertTrue("The operation of addition is not correct", calculator.sum(a, c) != RESULT);
     }
 
     @After
