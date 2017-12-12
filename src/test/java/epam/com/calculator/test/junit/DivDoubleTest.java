@@ -30,14 +30,13 @@ public class DivDoubleTest extends JunitBaseTest {
     }
 
     @Test
-    public void divTest()
-    {
-        Assert.assertTrue(calculator.div(a, b) == RESULT);
+    public void divTest() {
+        Assert.assertTrue("Division operation is not correct", calculator.div(a, b) == RESULT);
     }
 
     @Test
     public void divNegatTest () {
-        Assert.assertTrue(calculator.div(a, c) != RESULT);
+        Assert.assertTrue("Division operation is not correct",calculator.div(a, c) != RESULT);
     }
 
     @After

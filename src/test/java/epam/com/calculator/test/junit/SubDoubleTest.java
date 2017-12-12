@@ -25,14 +25,13 @@ public class SubDoubleTest extends JunitBaseTest {
     }
 
     @Test
-    public void sumTest()
-    {
-        Assert.assertTrue(calculator.sub(a, b) == RESULT);
+    public void sumTest() {
+        Assert.assertTrue("The operation of subtraction is not correct",calculator.sub(a, b) == RESULT);
     }
 
     @Test
     public void sumNegatTest () {
-        Assert.assertTrue(calculator.sub(a, c) != RESULT);
+        Assert.assertTrue("The operation of subtraction is not correct",calculator.sub(a, c) != RESULT);
     }
 
     @After

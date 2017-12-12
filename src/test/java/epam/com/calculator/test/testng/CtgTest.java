@@ -18,22 +18,20 @@ public class CtgTest extends TestngBaseTest {
     }
 
     @DataProvider(name = "DataProviderForCtgTest")
-    public Object [] [] paramForCtgtTest ()
-    {
+    public Object [] [] paramForCtgtTest () {
         return new Object[][]{
-                {"0.25", "0.24491866240370913", true},
-                {"-0.25", "-0.24491866240370913", true},
+                {"0.25", "0.24", true},
+                {"-0.25", "-0.24", true},
                 {"125.00", "1.00", true},
                 new Object[]{"200.00", "20.00", false},
         };
     }
 
-    @Test(dataProvider = "DataProviderForCtgTest")
-    public void ctgTest (String a, String b, boolean result)
-    {
+    @Test(dataProvider = "DataProviderForCtgTest", groups = {"Debug"})
+    public void ctgTest (String a, String b, boolean result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(calculator.ctg(FormatHelper.convertStringDouble(a)) == FormatHelper.convertStringDouble(b),
-                result);
+        softAssert.assertEquals(FormatHelper.round(calculator.ctg(FormatHelper.convertStringDouble(a))) == FormatHelper.convertStringDouble(b),
+                result, "The operation of Ctg is not correct");
         softAssert.assertAll();
     }
 

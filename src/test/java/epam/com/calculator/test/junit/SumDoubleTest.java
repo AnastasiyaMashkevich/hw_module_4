@@ -3,7 +3,10 @@ package epam.com.calculator.test.junit;
 import epam.com.calculator.test.support.FormatHelper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Assert;
+import org.junit.After;
 
 public class SumDoubleTest extends JunitBaseTest {
     private static final Logger LOG = LogManager.getLogger(SumDoubleTest.class);
@@ -22,14 +25,13 @@ public class SumDoubleTest extends JunitBaseTest {
     }
 
     @Test
-    public void sumTest()
-    {
-        Assert.assertTrue(calculator.sum(a, b) == RESULT);
+    public void sumTest() {
+        Assert.assertTrue("The operation of addition is not correct",calculator.sum(a, b) == RESULT);
     }
 
     @Test
     public void sumNegatTest () {
-        Assert.assertNotSame(calculator.sum(a, c), RESULT);
+        Assert.assertNotSame("The operation of addition is not correct", calculator.sum(a, c), RESULT);
     }
 
     @After

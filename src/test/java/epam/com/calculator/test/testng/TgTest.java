@@ -28,12 +28,12 @@ public class TgTest extends TestngBaseTest {
         };
     }
 
-    @Test(dataProvider = "DataProviderForTgTest")
+    @Test(dataProvider = "DataProviderForTgTest", groups = {"Debug"})
     public void tgTest (String a, String b, boolean result)
     {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(calculator.tg(FormatHelper.convertStringDouble(a)) == FormatHelper.convertStringDouble(b),
-                result);
+                result, "The operation of Tg is not correct");
         softAssert.assertAll();
     }
 

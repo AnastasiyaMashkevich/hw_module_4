@@ -2,12 +2,8 @@ package epam.com.calculator.runner;
 
 import org.testng.TestNG;
 import org.testng.collections.Lists;
-
 import java.util.List;
 
-/**
- * Created by anastasiya_mashkevic on 12/8/17.
- */
 public class Runner {
 	public static void main (String[] args) {
 		TestNG testng = new TestNG();
@@ -18,7 +14,7 @@ public class Runner {
 
 		//    ----- another variant ----
 		//    TestNG testng = new TestNG();
-		//    testng.setTestClasses(new Class[] { GoogleSearchTest.class });
+		//    testng.setTestClasses(new Class[] { CosTest.class });
 		//    testng.run();
 
 	}

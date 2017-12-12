@@ -22,18 +22,18 @@ public class IsNegativeTest extends TestngBaseTest {
     public Object [] [] paramForIsNegativeTest ()
     {
         return new Object[][]{
-                {"525222222222555", false},
-                {"6545323121444000", false},
-                {"-5522365411225555", true},
-                new Object[]{"-888800000000", true},
+                {"52", false},
+                {"654", false},
+                {"-5522", true},
+                new Object[]{"-8", true},
         };
     }
 
-    @Test(dataProvider = "DataProviderForIsNegativeTest")
+    @Test(dataProvider = "DataProviderForIsNegativeTest", groups = {"Debug"})
     public void isNegativeTest (String a, boolean result)
     {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(calculator.isNegative(FormatHelper.convertStringLong(a)), result);
+        softAssert.assertEquals(calculator.isNegative(FormatHelper.convertStringLong(a)), result, "Number is a positive.");
         softAssert.assertAll();
     }
 

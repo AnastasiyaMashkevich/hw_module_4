@@ -28,12 +28,12 @@ public class SqrtTest extends TestngBaseTest {
         };
     }
 
-    @Test(dataProvider = "DataProviderForSqrtTest")
+    @Test(dataProvider = "DataProviderForSqrtTest", groups = {"Debug"})
     public void sqrtTest (String a, String b, boolean result)
     {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(calculator.sqrt(FormatHelper.convertStringDouble(a)) == FormatHelper.convertStringDouble(b),
-                result);
+                result, "Sqrt operation is not correct");
         softAssert.assertAll();
     }
 

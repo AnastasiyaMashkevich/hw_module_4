@@ -19,27 +19,24 @@ public class IsPositiveTest extends TestngBaseTest {
     }
 
     @DataProvider(name = "DataProviderForIsPosTest")
-    public Object [] [] paramForIsPosTest ()
-    {
+    public Object [] [] paramForIsPosTest () {
         return new Object[][]{
-                {"525222222222555", true},
-                {"6545323121444000", true},
-                {"-5522365411225555", false},
-                new Object[]{"-888800000000", false},
+                {"525", true},
+                {"65", true},
+                {"-552", false},
+                new Object[]{"-88", false},
         };
     }
 
-    @Test(dataProvider = "DataProviderForIsPosTest")
-    public void isPositiveTest (String a, boolean result)
-    {
+    @Test(dataProvider = "DataProviderForIsPosTest", groups = {"Debug"})
+    public void isPositiveTest (String a, boolean result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(calculator.isPositive(FormatHelper.convertStringLong(a)), result);
+        softAssert.assertEquals(calculator.isPositive(FormatHelper.convertStringLong(a)), result, "Number is a negative.");
         softAssert.assertAll();
     }
 
-    @Test()
-    public void isPositiveZeroTest ()
-    {
+    @Test(groups = {"Broken"})
+    public void isPositiveZeroTest () {
         if(!calculator.isPositive(0L)) {
             Assert.fail("0L is not a positive and not a negative number");
         }

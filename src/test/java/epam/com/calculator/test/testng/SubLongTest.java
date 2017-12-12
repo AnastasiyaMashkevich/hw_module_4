@@ -18,39 +18,35 @@ public class SubLongTest extends TestngBaseTest {
     }
 
     @DataProvider(name = "DataProviderForSubTest")
-    public Object [] [] paramForSubTest ()
-    {
+    public Object [] [] paramForSubTest () {
         return new Object[][]{
-                {"10000000000", "2", "9999999998"},
-                {"-10000000000", "2", "-10000000002"},
-                new Object[]{"10000000000", "20000000000", "-10000000000"},
+                {"100", "2", "98"},
+                {"-10", "2", "-12"},
+                new Object[]{"100", "200", "-100"},
         };
     }
 
     @DataProvider(name = "DataProviderForNegativeSubTest")
-    public Object [] [] paramForNegativeSubTest ()
-    {
+    public Object [] [] paramForNegativeSubTest () {
         return new Object[][]{
-                {10000000000L, 12000000000L, 5000000},
-                {5001005000L, -155215454546L, 11},
-                {-14105558850252L, -55222221054L, 20},
+                {100, 12, 5},
+                {5001, -15, 11},
+                {-14105, -5522, 20},
         };
     }
 
-    @Test(dataProvider = "DataProviderForSubTest")
-    public void subTest (String a, String b, String result)
-    {
+    @Test(dataProvider = "DataProviderForSubTest", groups = {"Debug"})
+    public void subTest (String a, String b, String result) {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(calculator.sub(FormatHelper.convertStringLong(a), FormatHelper.convertStringLong(b)),
-                FormatHelper.convertStringLong(result));
+                FormatHelper.convertStringLong(result), "The operation of subtraction is not correct");
         softAssert.assertAll();
     }
 
-    @Test(dataProvider = "DataProviderForNegativeSubTest", dependsOnMethods = "subTest")
-    public void subNegatTest (long a, long b, long result)
-    {
+    @Test(dataProvider = "DataProviderForNegativeSubTest", dependsOnMethods = "subTest", groups = {"Debug"})
+    public void subNegatTest (long a, long b, long result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertNotEquals(calculator.sub(a, b), result);
+        softAssert.assertNotEquals(calculator.sub(a, b), result, "The operation of subtraction is not correct");
         softAssert.assertAll();
     }
 

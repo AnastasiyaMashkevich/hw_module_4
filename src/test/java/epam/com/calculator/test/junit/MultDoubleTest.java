@@ -25,14 +25,15 @@ public class MultDoubleTest extends JunitBaseTest {
     }
 
     @Test
-    public void multTest()
-    {
-        Assert.assertTrue("There is a bug. Correct result is " + RESULT, calculator.mult(a, b) == RESULT);
+    public void multTest() {
+        Assert.assertTrue("The operation of multiplication operation is not correct.There is a bug. Correct result is " + RESULT,
+                calculator.mult(a, b) == RESULT);
     }
 
     @Test
     public void multNegatTest () {
-        Assert.assertTrue(calculator.mult(a, c) != RESULT);
+        Assert.assertTrue("The operation of multiplication operation is not correct",
+                calculator.mult(a, c) != RESULT);
     }
 
     @After

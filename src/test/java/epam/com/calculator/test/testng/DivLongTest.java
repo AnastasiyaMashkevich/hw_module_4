@@ -18,44 +18,40 @@ public class DivLongTest extends TestngBaseTest {
     }
 
     @DataProvider(name = "DataProviderForDivTest")
-    public Object [] [] paramForDivTest ()
-    {
+    public Object [] [] paramForDivTest () {
         return new Object[][]{
-                {"10000000000", "2", "5000000000"},
-                {"-10000000000", "2", "-5000000000"},
-                new Object[]{"20000000000", "20000000000", "1"},
+                {"100", "2", "50"},
+                {"-100", "2", "-50"},
+                new Object[]{"200", "200", "1"},
         };
     }
 
     @DataProvider(name = "DataProviderForNegativeDivTest")
-    public Object [] [] paramForNegativeDivTest ()
-    {
+    public Object [] [] paramForNegativeDivTest () {
         return new Object[][]{
-                {10000000000L, 12000000000L, 5000000},
-                {5001005000L, -155215454546L, 11},
-                {-14105558850252L, -55222221054L, 20},
+                {100, 120, 50},
+                {50, -155, 1},
+                {-141, -5522, 20},
         };
     }
 
     @Test(expectedExceptions = NumberFormatException.class)
     public void divByZeroTest() throws NumberFormatException {
-        calculator.div(2504543212L, 0L);
+        calculator.div(25, 0L);
     }
 
-    @Test(dataProvider = "DataProviderForDivTest")
-    public void divTest (String a, String b, String result)
-    {
+    @Test(dataProvider = "DataProviderForDivTest", groups = {"Debug"})
+    public void divTest (String a, String b, String result) {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(calculator.div(FormatHelper.convertStringLong(a), FormatHelper.convertStringLong(b)),
                 FormatHelper.convertStringLong(result));
         softAssert.assertAll();
     }
 
-    @Test(dataProvider = "DataProviderForNegativeDivTest")
-    public void divNegatTest (long a, long b, long result)
-    {
+    @Test(dataProvider = "DataProviderForNegativeDivTest", groups = {"Debug"})
+    public void divNegatTest (long a, long b, long result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertNotEquals(calculator.div(a, b), result);
+        softAssert.assertNotEquals(calculator.div(a, b), result, "Division operation is not correct");
         softAssert.assertAll();
     }
 

@@ -9,38 +9,34 @@ public class SumLongTest extends TestngBaseTest {
     private static final Logger LOG = LogManager.getLogger(SumLongTest.class);
 
     @DataProvider(name = "DataProviderForSumTest")
-    public Object [] [] paramForSumTest ()
-    {
+    public Object [] [] paramForSumTest () {
         return new Object[][]{
-                {10000000000L, 2, 10000000002L},
-                {-10000000000L, 2, -9999999998L},
-                new Object[]{10000000000L, 20000000000L, 30000000000L},
+                {100, 2, 102},
+                {-100, 2, -98},
+                new Object[]{100, 200, 300},
         };
     }
 
     @DataProvider(name = "DataProviderForNegativeSumTest")
-    public Object [] [] paramForNegativeSumTest ()
-    {
+    public Object [] [] paramForNegativeSumTest () {
         return new Object[][]{
-                {10000000000L, 12000000000L, 5000000},
-                {5001005000L, -155215454546L, 11},
-                {-14105558850252L, -55222221054L, 20},
+                {100, 12, 50},
+                {50, -155, 11},
+                {-14105, -552, 20},
         };
     }
 
-    @Test(dataProvider = "DataProviderForSumTest")
-    public void sumTest (long a, long b, long result)
-    {
+    @Test(dataProvider = "DataProviderForSumTest", groups = {"Debug"})
+    public void sumTest (long a, long b, long result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(calculator.sum(a, b), result);
+        softAssert.assertEquals(calculator.sum(a, b), result, "The operation of addition is not correct");
         softAssert.assertAll();
     }
 
-    @Test(dataProvider = "DataProviderForNegativeSumTest")
-    public void sumNegatTest (long a, long b, long result)
-    {
+    @Test(dataProvider = "DataProviderForNegativeSumTest", groups = {"Debug"})
+    public void sumNegatTest (long a, long b, long result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertNotEquals(calculator.sum(a, b), result);
+        softAssert.assertNotEquals(calculator.sum(a, b), result, "The operation of addition is not correct");
         softAssert.assertAll();
     }
 

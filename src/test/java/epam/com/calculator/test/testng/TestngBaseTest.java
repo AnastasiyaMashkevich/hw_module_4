@@ -8,15 +8,16 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 public class TestngBaseTest {
-	public Calculator calculator;
+	protected Calculator calculator;
 	private static final Logger LOG = LogManager.getLogger(TestngBaseTest.class);
+	//this static block needs to configure logger
     static {
         BasicConfigurator.configure();
     }
 
-	@BeforeTest
+	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
-        LOG.info("Before test is working.");
+        LOG.info("Calculator object initialization is starting. ");
         calculator = new Calculator();
 	}
 
@@ -25,14 +26,14 @@ public class TestngBaseTest {
         LOG.info("Before group is working.");
     }
 
+	@AfterMethod
+	public void shutDown() {
+		LOG.info("Cos test is done.");
+	}
+
     @AfterGroups
     public void afterGroup() {
         LOG.info("After group is working.");
-    }
-
-	@AfterTest
-    public void afterTest() {
-	    LOG.info("After test is working.");
     }
 
 }

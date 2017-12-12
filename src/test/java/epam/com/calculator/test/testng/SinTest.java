@@ -18,22 +18,20 @@ public class SinTest extends TestngBaseTest {
     }
 
     @DataProvider(name = "DataProviderForSinTest")
-    public Object [] [] paramForSinTest ()
-    {
+    public Object [] [] paramForSinTest () {
         return new Object[][]{
-                {"5.25", "-0.858934493426592", true},
-                {"-5.25", "0.858934493426592", true},
-                {"0.00", "0.00", true},
-                new Object[]{"25.00", "20.00", false},
+                {"5.25", "-0.86", true},
+                {"-5.25", "0.86", true},
+                {"0.00", "0.0", true},
+                new Object[]{"25.00", "20.0", false},
         };
     }
 
-    @Test(dataProvider = "DataProviderForSinTest")
-    public void sinTest (String a, String b, boolean result)
-    {
+    @Test(dataProvider = "DataProviderForSinTest", groups = {"Debug"})
+    public void sinTest (String a, String b, boolean result) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(calculator.sin(FormatHelper.convertStringDouble(a)) == FormatHelper.convertStringDouble(b),
-                result);
+        softAssert.assertEquals(FormatHelper.round(calculator.sin(FormatHelper.convertStringDouble(a))) == FormatHelper.convertStringDouble(b),
+                result, "Sin operation is not correct");
         softAssert.assertAll();
     }
 
