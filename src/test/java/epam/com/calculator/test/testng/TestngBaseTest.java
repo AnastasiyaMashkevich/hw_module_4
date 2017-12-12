@@ -1,7 +1,10 @@
 package epam.com.calculator.test.testng;
 
 import com.epam.tat.module4.Calculator;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.AfterGroups;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
@@ -11,29 +14,28 @@ public class TestngBaseTest {
 	protected Calculator calculator;
 	private static final Logger LOG = LogManager.getLogger(TestngBaseTest.class);
 	//this static block needs to configure logger
-    static {
-        BasicConfigurator.configure();
-    }
+	static {
+		BasicConfigurator.configure();
+	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
-        LOG.info("Calculator object initialization is starting. ");
-        calculator = new Calculator();
+		LOG.info("Calculator object initialization is starting. ");
+		calculator = new Calculator();
 	}
 
 	@BeforeGroups
-    public void beforeGroup() {
-        LOG.info("Before group is working.");
-    }
+	public void beforeGroup() {
+		LOG.info("Before group is working.");
+	}
 
 	@AfterMethod
 	public void shutDown() {
 		LOG.info("Cos test is done.");
 	}
 
-    @AfterGroups
-    public void afterGroup() {
-        LOG.info("After group is working.");
-    }
-
+	@AfterGroups
+	public void afterGroup() {
+		LOG.info("After group is working.");
+	}
 }

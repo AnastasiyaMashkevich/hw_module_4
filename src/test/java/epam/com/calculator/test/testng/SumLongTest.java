@@ -2,7 +2,8 @@ package epam.com.calculator.test.testng;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.testng.annotations.*;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class SumLongTest extends TestngBaseTest {

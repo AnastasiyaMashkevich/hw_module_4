@@ -3,7 +3,7 @@
     <listeners>
         <listener class-name="epam.com.calculator.runner.listner.TestListners" />
     </listeners>
-    <test name="Test1" >
+    <test name="Test" >
         <groups>
         <run>
             <include name="Debug"/>

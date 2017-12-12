@@ -3,7 +3,10 @@ package epam.com.calculator.test.testng;
 import epam.com.calculator.test.support.FormatHelper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class CosTest extends TestngBaseTest {
